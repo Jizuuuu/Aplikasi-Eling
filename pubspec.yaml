@@ -1,0 +1,46 @@
+name: eling_app
+description: "ELING - Smart Daily Reminder with Indonesian Voice & AI Assistant"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Local Database
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
+
+  # Notifications & Scheduling
+  flutter_local_notifications: ^17.2.1
+  timezone: ^0.9.4
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+
+  # Date, Time & Localization
+  intl: ^0.19.0
+
+  # Hardware & Permissions
+  permission_handler: ^11.3.1
+  speech_to_text: ^6.6.1
+  android_intent_plus: ^5.0.2
+
+  # Networking for AI Proxy
+  dio: ^5.4.3+1
+
+  # UI & Styling Icons
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
