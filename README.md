@@ -60,105 +60,112 @@ Saat pertama kali aplikasi dipasang, database SQLite secara otomatis menyediakan
 
 ## 🛠️ Software & Tools yang Perlu Diinstall Terlebih Dahulu
 
-Sebelum menjalankan proyek ini, pastikan perangkat komputer Anda sudah menginstal aplikasi dan peralatan pendukung berikut:
+Untuk menjalankan dan mengembangkan proyek ini, Anda **hanya perlu menggunakan Visual Studio Code (VS Code)** sebagai editor utama.
 
-### 1. Git for Windows
-- **Fungsi**: Untuk mengunduh (*clone*) kode sumber dari GitHub dan mengelola versi kode.
+### 1. Visual Studio Code (VS Code)
+- **Fungsi**: Editor kode utama untuk mengedit, menjalankan, dan mendebug aplikasi.
+- **Download**: [code.visualstudio.com](https://code.visualstudio.com/)
+- **Ekstensi VS Code yang Wajib Dipasang**:
+  Buka tab *Extensions* di VS Code (`Ctrl + Shift + X`), lalu cari dan pasang:
+  1. **Flutter** (oleh *Dart Code*)
+  2. **Dart** (otomatis terpasang bersama ekstensi Flutter)
+
+### 2. Git for Windows
+- **Fungsi**: Untuk mengunduh (*clone*) kode repositori dari GitHub.
 - **Download**: [git-scm.com](https://git-scm.com/download/win)
 
-### 2. Flutter SDK (Versi 3.24+ atau 3.27+)
-- **Fungsi**: Framework utama pembuat aplikasi mobile.
+### 3. Flutter SDK
+- **Fungsi**: Framework inti untuk kompilasi dan eksekusi aplikasi.
 - **Download**: [flutter.dev/docs/get-started/install/windows](https://docs.flutter.dev/get-started/install/windows)
-- **Cara Install**:
-  1. Ekstrak file zip Flutter ke folder bebas spasi (disarankan: `C:\src\flutter`).
-  2. **Daftarkan ke Windows PATH secara permanen**:
-     - Buka menu Windows > cari **"Edit the system environment variables"** (atau "Edit environment variables for your account").
-     - Klik tombol **Environment Variables**.
-     - Di bagian *User variables* atau *System variables*, cari variabel **Path** > klik **Edit**.
-     - Klik **New** > masukkan path: `C:\src\flutter\bin`.
-     - Klik **OK** hingga semua jendela tertutup.
-     > 💡 **PENTING**: Setelah menambahkan PATH, **restart aplikasi editor Anda (tutup lalu buka kembali VS Code / Antigravity IDE)** agar terminal langsung mengenali perintah `flutter` secara permanen tanpa perlu mengatur path berulang kali!
+- **Cara Install & Pengaturan PATH Permanen**:
+  1. Ekstrak file zip Flutter ke folder tanpa spasi (contoh: `C:\src\flutter`).
+  2. Tambahkan `C:\src\flutter\bin` ke **Environment Variables (PATH)** Windows:
+     - Cari **"Edit the system environment variables"** di menu Windows.
+     - Klik **Environment Variables** > Pada *User Variables*, pilih **Path** > klik **Edit**.
+     - Klik **New** > masukkan: `C:\src\flutter\bin` > klik **OK**.
+  > 💡 **PENTING**: Setelah menambah PATH, **tutup lalu buka kembali VS Code** agar terminal langsung mengenali perintah `flutter` secara permanen.
 
-### 3. Android Studio & Android SDK
-- **Fungsi**: Menyediakan SDK Android, compiler Gradle, dan Emulator ponsel virtual.
-- **Download**: [developer.android.com/studio](https://developer.android.com/studio)
-- **Komponen yang wajib dipasang via SDK Manager (di Android Studio):**
-  - **SDK Platforms**: Centang `Android 14.0 ("UpsideDownCake") - API 34` dan `Android API 36`.
-  - **SDK Tools**: 
-    - `Android SDK Build-Tools`
-    - `Android SDK Command-line Tools (latest)`
-    - `Android SDK Platform-Tools`
-    - `Android Emulator`
-- **Membuat Emulator Android**:
-  - Buka *Device Manager* di Android Studio > Buat Virtual Device baru (misal: **Pixel 3a API 34** atau **Pixel 7**).
-
-### 4. Java Development Kit (JDK 17 atau 21)
-- Android Studio sudah menyertakan Java (JetBrains Runtime `jbr`). 
-- Jika diperlukan secara terpisah: [Adoptium Eclipse Temurin JDK 17](https://adoptium.net/temurin/releases/?version=17).
-
-### 5. Node.js (Opsional — Hanya untuk Proxy Server AI Cloud)
-- **Fungsi**: Hanya diperlukan jika Anda ingin menjalankan server backend AI Gemini di komputer lokal.
-- **Download**: [nodejs.org](https://nodejs.org/) (Pilih versi LTS).
+### 4. Android SDK Platform Tools (Untuk Menjalankan Aplikasi)
+- Menyediakan driver adb dan library Android untuk kompilasi aplikasi.
+- *Catatan*: Cukup terpasang di komputer (bawaan Android SDK / Command Line Tools), Anda **tidak perlu membuka Android Studio** saat mengerjakan proyek ini.
 
 ---
 
-## 🚀 Panduan Menjalankan Hasil Clone dari GitHub
+## 🚀 Panduan Menjalankan Proyek 100% di VS Code
 
-Jika Anda atau anggota tim baru saja meng-clone repositori ini dari GitHub, ikuti langkah-langkah berikut:
+Ikuti langkah-langkah mudah berikut untuk membuka dan menjalankan proyek langsung dari VS Code:
 
-### Langkah 1: Clone Repositori & Buka Direktori
-Buka terminal (PowerShell / Command Prompt / Git Bash):
-```bash
-git clone <URL_REPOSITORI_GITHUB_ANDA>
-cd "Aplikasi Eling"
-```
+### Langkah 1: Clone Repositori & Buka di VS Code
+1. Buka terminal atau Command Prompt:
+   ```bash
+   git clone https://github.com/Jizuuuu/Aplikasi-Eling.git
+   ```
+2. Buka folder proyek tersebut di **VS Code**:
+   ```bash
+   code "Aplikasi-Eling"
+   ```
+   *(Atau buka VS Code > menu **File** > **Open Folder...** > pilih folder `Aplikasi-Eling`)*.
 
-### Langkah 2: Periksa Kesiapan Lingkungan (*Flutter Doctor*)
-Jalankan perintah berikut untuk memastikan Flutter dan Android SDK terdeteksi:
-```bash
-flutter doctor
-```
-*(Pastikan Flutter dan Android toolchain bertanda centang hijau).*
+---
 
-### Langkah 3: Unduh Dependensi Paket Aplikasi
-Jalankan perintah berikut untuk mengunduh semua library Flutter yang terdaftar di `pubspec.yaml`:
+### Langkah 2: Unduh Dependensi Aplikasi
+Buka terminal terintegrasi di VS Code dengan menekan tombol keyboard:
+**`Ctrl + ` `** (Control + Backtick) atau menu **Terminal** > **New Terminal**, lalu ketik:
 ```bash
 flutter pub get
 ```
 
-### Langkah 4: Jalankan Pengujian Otomatis (*Unit & Widget Testing*)
-Pastikan semua logika bisnis dan model data lulus uji sebelum dijalankan ke perangkat:
+---
+
+### Langkah 3: Jalankan Pengujian Otomatis (*Unit & Widget Test*)
+Ketik perintah berikut di terminal VS Code untuk memastikan seluruh fitur lulus uji:
 ```bash
 flutter test
 ```
-*(Hasil yang diharapkan: **All tests passed!** — 12/12 test case lulus).*
+*(Hasil yang diharapkan: **All tests passed!** — 12/12 skenario pengujian IMPAL berhasil).*
 
-### Langkah 5: Nyalakan Emulator atau Sambungkan HP Android
-- **Menyalakan Emulator dari Terminal**:
+---
+
+### Langkah 4: Pilih Perangkat Target (Di Pojok Bawah VS Code)
+
+Anda memiliki 2 opsi perangkat untuk menjalankan aplikasi:
+
+#### Opsi A: Menggunakan HP Android Fisik (Paling Disarankan & Sangat Ringan ⭐)
+Jika laptop Anda terasa berat saat menjalankan emulator Android, gunakan HP Android fisik:
+1. Hubungkan HP Android ke laptop menggunakan kabel data USB.
+2. Di HP Android, aktifkan **Opsi Pengembang (Developer Options)** dan centang **USB Debugging**.
+3. Di pojok kanan bawah jendela VS Code, nama HP Anda akan langsung muncul otomatis.
+
+#### Opsi B: Menggunakan Emulator Android dari VS Code
+Jika ingin menggunakan emulator tanpa membuka Android Studio:
+1. Tekan tombol **`Ctrl + Shift + P`** di keyboard untuk membuka Command Palette VS Code.
+2. Ketik dan pilih: **`Flutter: Launch Emulator`**.
+3. Pilih emulator yang tersedia (contoh: `Pixel_3a_API_34` atau `Pixel 4`).
+4. Jendela emulator akan otomatis menyala di layar Anda.
+
+---
+
+### Langkah 5: Jalankan Aplikasi Langsung dari VS Code
+
+Setelah perangkat terhubung atau emulator menyala, jalankan aplikasi dengan salah satu cara berikut:
+
+- **Cara 1 (Tombol Pintas VS Code)**:  
+  Cukup tekan tombol **`F5`** pada keyboard (atau menu **Run** > **Start Debugging**).
+- **Cara 2 (Via Terminal VS Code)**:  
+  Ketik perintah berikut di terminal VS Code:
   ```bash
-  flutter emulators --launch Pixel_3a_API_34
-  ```
-  *(Atau jalankan emulator langsung dari tombol play di Android Studio Device Manager)*.
-- **Periksa Perangkat yang Terhubung**:
-  ```bash
-  flutter devices
+  flutter run --android-skip-build-dependency-validation
   ```
 
-### Langkah 6: Jalankan Aplikasi
-Jalankan aplikasi ke emulator atau HP fisik Anda:
-```bash
-flutter run --android-skip-build-dependency-validation
-```
-
-Aplikasi akan otomatis mengompilasi APK, menginstal ke emulator/HP, dan membuka layar **Login**.
+Aplikasi akan otomatis mengompilasi APK, terpasang di HP/emulator, dan langsung membuka layar **Login**.
 
 ---
 
 ## 🌐 Menjalankan Server Proxy AI (Opsional)
 
-Aplikasi sudah memiliki fitur kecerdasan lokal (*offline parser*) tanpa butuh internet. Namun jika Anda ingin menghubungkannya ke model Google Gemini secara live di cloud:
+Aplikasi ELING sudah dilengkapi kecerdasan lokal tanpa perlu internet (*Offline-First*). Jika ingin mencoba integrasi cloud Gemini API:
 
-1. Buka terminal baru dan masuk ke folder `server`:
+1. Buka terminal baru di VS Code, masuk ke folder `server`:
    ```bash
    cd server
    npm install
